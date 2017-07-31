@@ -90,7 +90,6 @@ class App extends Component {
   _handleFilters = criteria => {
     const filter = Object.keys(criteria)[0]
     const filterValue = Object.values(criteria)[0]
-
     // Check if the current selected filter already exist
     if (
       // Vue: this.filters
@@ -115,7 +114,7 @@ class App extends Component {
       // Here we go insed the current selected filter array to only remove the current selected value
       else if (this.state.filters[filter].length > 1) {
         // Vue:
-        // this.filters: {
+        // this.filters = {
         //   ...this.filters,
         //   [filter]: [
         //     ...this.filters[filter].slice(0,this.filters[filter].indexOf(filterValue)),
@@ -145,7 +144,7 @@ class App extends Component {
       const existingFilters = this.state.filters[filter] || []
 
       // Vue :
-      // this.filters: {
+      // this.filters = {
       //   ...this.filters,
       //   [filter]:
       //     (filter === 'theme' || filter === 'anotherSingleValueFilter' || filter === 'anotherFilter')
@@ -169,7 +168,6 @@ class App extends Component {
 
   _filterData = (): void => {
     let filteredData = this.state.data.slice()
-
     Object.keys(this.state.filters).map(filterKey =>
       this.state.filters[filterKey].map(filterValue =>
         this.state.data.map(data =>
@@ -179,8 +177,7 @@ class App extends Component {
         )))
       )
     )
-
-      // Vue: this.filteredData : filteredData
+    // Vue: this.filteredData = filteredData
     this.setState(() => ({ filteredData }))
   }
 
