@@ -9,7 +9,6 @@ const Button = ({ data, text, onClick }) =>
 
 class App extends Component {
   state = {
-    // buttons = Filters component data
     buttons: [
       { id: 0, text: 'Duration ⏲️', criteria: { duration: 4680 } },
       {
@@ -83,7 +82,6 @@ class App extends Component {
     filteredData: [],
   }
 
-  // Vue: beforeMount this.filteredData = this.data (props received through getPosts)
   componentWillMount = () =>
     this.setState(state => ({ filteredData: state.data }))
 
@@ -92,7 +90,6 @@ class App extends Component {
     const filterValue = Object.values(criteria)[0]
     // Check if the current selected filter already exist
     if (
-      // Vue: this.filters
       this.state.filters[filter] &&
       this.state.filters[filter].length &&
       this.state.filters[filter].includes(filterValue)
@@ -103,9 +100,6 @@ class App extends Component {
         // Take all the remaining filters, and put them back into this.state.filters
         const { [filter]: removedFilter, ...remainingFilters } = this.state.filters
 
-        // Vue: 
-        // this.filters = { ...remainingFilters }
-        // this.filterData()
         this.setState(
           state => ({ filters: { ...remainingFilters } }),
           () => this._filterData(),
@@ -113,15 +107,6 @@ class App extends Component {
       }
       // Here we go insed the current selected filter array to only remove the current selected value
       else if (this.state.filters[filter].length > 1) {
-        // Vue:
-        // this.filters = {
-        //   ...this.filters,
-        //   [filter]: [
-        //     ...this.filters[filter].slice(0,this.filters[filter].indexOf(filterValue)),
-        //     ...this.filters[filter].slice(this.filters[filter].indexOf(filterValue) + 1),
-        //   ],
-        // }
-        // this.filterData()
         this.setState(
           state => ({
             filters: {
@@ -143,14 +128,6 @@ class App extends Component {
       // Vue: existingFilters = this.filters[filter]
       const existingFilters = this.state.filters[filter] || []
 
-      // Vue :
-      // this.filters = {
-      //   ...this.filters,
-      //   [filter]:
-      //     (filter === 'theme' || filter === 'anotherSingleValueFilter' || filter === 'anotherFilter')
-      //       ? [filterValue]
-      //       : [...existingFilters, filterValue],
-      // }
       this.setState(
         state => ({
           filters: {
@@ -177,7 +154,6 @@ class App extends Component {
         )))
       )
     )
-    // Vue: this.filteredData = filteredData
     this.setState(() => ({ filteredData }))
   }
 
