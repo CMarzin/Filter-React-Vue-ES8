@@ -20,3 +20,6 @@ yarn start
 npm i
 npm start
 ```
+
+Special Thanks to https://github.com/CharlesMangwa for the react part ! 
+You rock !
