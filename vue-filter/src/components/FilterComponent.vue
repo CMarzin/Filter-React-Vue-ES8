@@ -7,15 +7,10 @@
     <p :key="index" v-for="(data, index) in this.filteredData">
       {{data.text}}
     </p>
-    <div>
-     <h2> 🕵️‍♂️ Actived filters 🔍:</h2>
-     <p> {{ this.filters}}</p>
-      <span :key="index" v-for="(keys, index) in Object.keys(this.filters)">
-       <span :key="index" v-for="(truc, index) in keys">
-          {{ keys }} | 
-       </span>
-      </span>
-    </div>
+    <h2> 🕵️‍♂️ Actived filters 🔍:</h2>
+    <span :key="index" v-for="(filters, key, index) in this.filters">
+      {{ key }} | {{ filters[0] }}
+    </span>
   </div>
 </template>
 
